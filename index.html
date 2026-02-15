@@ -1,9 +1,387 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konstantin M. Wacker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-text: #1a1a1a;
+            --color-text-light: #4a4a4a;
+            --color-accent: #2a4a6a;
+            --color-border: #e0e0e0;
+            --color-bg: #fafafa;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Karla', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .contact a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            color: var(--color-accent);
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+            font-size: 1rem;
+        }
+
+        .affiliations {
+            margin: 1.5rem 0;
+        }
+
+        .affiliations ul {
+            list-style: none;
+        }
+
+        .affiliations li {
+            padding: 0.4rem 0;
+            color: var(--color-text-light);
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .affiliations li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 2px;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .publications {
+            list-style: none;
+        }
+
+        .publications li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+            transition: transform 0.3s ease;
+        }
+
+        .publications li:last-child {
+            border-bottom: none;
+        }
+
+        .publications li:hover {
+            transform: translateX(5px);
+        }
+
+        .pub-title {
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+            line-height: 1.5;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .pub-venue {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        .talks-list {
+            list-style: none;
+        }
+
+        .talks-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .talks-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 400;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: white;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>My GitHub Page is under construction.</p>
-<p>Meanwhile please visit my RUG website: 
-<a href="https://sites.google.com/rug.nl/kmwacker/">sites.google.com/rug.nl/kmwacker/</a></p>
+    <div class="container">
+        <header>
+            <h1>Konstantin M. Wacker</h1>
+            <p class="subtitle">Associate Professor, University of Groningen</p>
+            <div class="contact">
+                <p>Nettelbosje 2, Room 5411-0518<br>
+                9747 AE Groningen, The Netherlands</p>
+                <p>k.m.wacker [at] rug.nl</p>
+            </div>
+            <div class="nav-links">
+                <a href="https://drive.google.com/file/d/1jr-Sk6DHHPywopRSo8R8QzsmvuwrAc0S/view" target="_blank">CV</a>
+                <a href="https://scholar.google.com/citations?user=xV6srDwAAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://ideas.repec.org/f/pwa432.html" target="_blank">RePEc</a>
+                <a href="https://research.rug.nl/en/persons/konstantin-wacker" target="_blank">Research Portal</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>About</h2>
+            <p>I am an associate professor at the University of Groningen and an expert on the empirics and policies of economic growth and macroeconomic development.</p>
+            
+            <div class="affiliations">
+                <ul>
+                    <li>Consultant, World Bank</li>
+                    <li>Visiting Researcher, Statistics Netherlands (CBS)</li>
+                    <li>Research Fellow, Vienna Institute for International Economic Studies (wiiw)</li>
+                    <li>Fellow, Global Labor Organization</li>
+                </ul>
+            </div>
+
+            <p>My research contributed to the Horizon Europe <a href="https://twinseeds.eu/" target="_blank" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">Twin Seeds</a> project and I managed a NWO research project on export quality in global value chains.</p>
+        </section>
+
+        <section>
+            <h2>Research Interests</h2>
+            <div class="research-interests">
+                <span class="tag">Economic Growth</span>
+                <span class="tag">Development Economics</span>
+                <span class="tag">Foreign Direct Investment</span>
+                <span class="tag">Export Quality</span>
+                <span class="tag">Global Value Chains</span>
+                <span class="tag">Applied Econometrics</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Selected Publications</h2>
+            <ul class="publications">
+                <li>
+                    <div class="pub-title">Measuring Multinational Production with Foreign Direct Investment Statistics: Recent Trends, Challenges, and Developments</div>
+                    <div class="pub-authors">with Maria Borga and Bruno Casella</div>
+                    <div class="pub-venue">Journal of Economic Surveys, 2024</div>
+                </li>
+                <li>
+                    <div class="pub-title">Good Enough for Outstanding Growth: The Experience of Bangladesh in Comparative Perspective</div>
+                    <div class="pub-authors">with Robert C.M. Beyer</div>
+                    <div class="pub-venue">Development Policy Review, 2024</div>
+                </li>
+                <li>
+                    <div class="pub-title">Export quality and the distribution of income</div>
+                    <div class="pub-authors">with E. Koopman</div>
+                    <div class="pub-venue">World Development, 2023</div>
+                </li>
+                <li>
+                    <div class="pub-title">FDI and tax havens: Evidence from German financial linkages</div>
+                    <div class="pub-authors">with V. Hartmann</div>
+                    <div class="pub-venue">Review of Development Economics, 2023</div>
+                </li>
+                <li>
+                    <div class="pub-title">Explaining Ethiopia's Growth Acceleration—The Role of Infrastructure and Macroeconomic Policy</div>
+                    <div class="pub-authors">with Lars Christian Moller</div>
+                    <div class="pub-venue">World Development, 2017</div>
+                </li>
+            </ul>
+            <p style="margin-top: 1.5rem;"><a href="https://ideas.repec.org/f/pwa432.html" target="_blank" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">Full publication list →</a></p>
+        </section>
+
+        <section>
+            <h2>Upcoming Talks</h2>
+            <ul class="talks-list">
+                <li>INEQ Research Seminar, WU Vienna — June 15, 2026</li>
+                <li>IMK Düsseldorf — February 10, 2026</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Last updated February 2026</p>
+        </footer>
+    </div>
 </body>
 </html>
