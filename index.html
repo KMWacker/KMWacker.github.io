@@ -7,296 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-text: #1a1a1a;
-            --color-text-light: #4a4a4a;
-            --color-accent: #2a4a6a;
-            --color-border: #e0e0e0;
-            --color-bg: #fafafa;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Karla', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            color: var(--color-text);
-            line-height: 1.6;
-            background: var(--color-bg);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        header {
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--color-border);
-            animation: slideDown 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-family: var(--font-sans);
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-        }
-
-        .subtitle {
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact {
-            font-size: 0.95rem;
-            color: var(--color-text-light);
-            line-height: 1.8;
-        }
-
-        .contact a {
-            color: var(--color-accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact a:hover {
-            border-bottom-color: var(--color-accent);
-        }
-
-        section {
-            margin-bottom: 3.5rem;
-            animation: fadeInUp 0.8s ease-out both;
-        }
-
-        section:nth-child(2) { animation-delay: 0.3s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        section:nth-child(4) { animation-delay: 0.5s; }
-        section:nth-child(5) { animation-delay: 0.6s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h2 {
-            font-family: var(--font-sans);
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 1.2rem;
-            color: var(--color-accent);
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--color-text-light);
-            font-size: 1rem;
-        }
-
-        .affiliations {
-            margin: 1.5rem 0;
-        }
-
-        .affiliations ul {
-            list-style: none;
-        }
-
-        .affiliations li {
-            padding: 0.4rem 0;
-            color: var(--color-text-light);
-            position: relative;
-            padding-left: 1.2rem;
-        }
-
-        .affiliations li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-        }
-
-        .research-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            padding: 0.4rem 1rem;
-            background: white;
-            border: 1px solid var(--color-border);
-            border-radius: 2px;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            transform: translateY(-2px);
-        }
-
-        .publications {
-            list-style: none;
-        }
-
-        .publications li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--color-border);
-            transition: transform 0.3s ease;
-        }
-
-        .publications li:last-child {
-            border-bottom: none;
-        }
-
-        .publications li:hover {
-            transform: translateX(5px);
-        }
-
-        .pub-title {
-            font-weight: 500;
-            color: var(--color-text);
-            margin-bottom: 0.3rem;
-            line-height: 1.5;
-        }
-
-        .pub-authors {
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-            margin-bottom: 0.3rem;
-        }
-
-        .pub-venue {
-            font-size: 0.9rem;
-            color: var(--color-accent);
-            font-style: italic;
-        }
-
-        .talks-list {
-            list-style: none;
-        }
-
-        .talks-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--color-text-light);
-        }
-
-        .talks-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 400;
-            padding-bottom: 2px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            border-bottom-color: var(--color-accent);
-        }
-
-        footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 0.8s both;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 2rem 1.5rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-        }
-
-        ::selection {
-            background: var(--color-accent);
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Konstantin M. Wacker</h1>
+            <h1><a href="index.html">Konstantin M. Wacker</a></h1>
             <p class="subtitle">Lead Economist for Development Strategy <br>
             United Nations Development Programme (UNDP), Asia and the Pacific <br>
             Associate Professor of Macroeconomics, Webster Vienna Private University (on leave) </p>
@@ -305,94 +21,37 @@
             </div>
             <div class="nav-links">
                 <a href="https://drive.google.com/file/d/1jr-Sk6DHHPywopRSo8R8QzsmvuwrAc0S/view" target="_blank">CV</a>
-                <a href="https://scholar.google.com/citations?user=xV6srDwAAAAJ" target="_blank">Google Scholar</a>
-                <a href="https://ideas.repec.org/f/pwa432.html" target="_blank">RePEc</a>
+                <a href="research.html">Research</a>
             </div>
         </header>
 
         <section>
             <h2>About</h2>
             <p> I am an expert on the empirics of economic growth and macroeconomic development strategies.</p>
-            
-            <p> Prior to my current role at UNDP, I was an associate professor at the University of Groningen and at Webster Vienna Private University (currently on leave). I have also been a regular consultant for the World Bank, a visiting researcher at Statistics Netherlands (CBS), and I am a research fellow at the Vienna Institute for International Economic Studies (wiiw) and a fellow at the Global Labor Organization.<p>
 
-            <p>My research contributed to the Horizon Europe <a href="https://twinseeds.eu/" target="_blank" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">Twin Seeds</a> project and I managed a NWO research project on export quality in global value chains.</p>
+            <p> Prior to my current role at UNDP, I was an associate professor at the University of Groningen and at Webster Vienna Private University (currently on leave). I have also been a regular consultant for the World Bank, a visiting researcher at Statistics Netherlands (CBS), and I am a research fellow at the Vienna Institute for International Economic Studies (wiiw) and a fellow at the Global Labor Organization.</p>
+
+            <p>My research contributed to the Horizon Europe <a class="text-link" href="https://twinseeds.eu/" target="_blank">Twin Seeds</a> project and I managed a NWO research project on export quality in global value chains.</p>
         </section>
 
         <section>
             <h2>Research Interests</h2>
             <div class="research-interests">
-                <span class="tag">Economic Growth</span>
-                <span class="tag">Development Macroeconomics</span>
-                <span class="tag">Aggregate Productivity </span> 
-                <span class="tag">Foreign Direct Investment</span>
-                <span class="tag">Export Quality</span>
-                <span class="tag">Technological Change & Employment</span>
-                <span class="tag">Panel Data Econometrics</span>
+                <a class="tag" href="research.html#growth">Economic Growth</a>
+                <a class="tag" href="research.html#growth">Development Macroeconomics</a>
+                <a class="tag" href="research.html#growth">Aggregate Productivity</a>
+                <a class="tag" href="research.html#fdi">Foreign Direct Investment</a>
+                <a class="tag" href="research.html#export">Export Quality</a>
+                <a class="tag" href="research.html#growth">Technological Change &amp; Employment</a>
+                <a class="tag" href="research.html#econometrics">Panel Data Econometrics</a>
             </div>
-        </section>
-
-        <section>
-            <h2>Selected Publications</h2>
-            <ul class="publications">
-
-                <li>
-                <a href="https://doi.org/10.1111/obes.70021" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-                <div class="pub-title">Accounting for cross-country differences in output per worker: a sectoral CES perspective.</div>
-                <div class="pub-authors">with Jan Trenczek</div>
-                <div class="pub-venue">Oxford Bulletin of Economics and Statistics, 2026 </div>
-                </a>
-                </li>
-                <li>
-                <a href="https://doi.org/10.1017/S1365100526101345" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-                <div class="pub-title">How important is human capital misallocation across sectors for aggregate productivity differences? Evidence beyond Cobb-Douglas.</div>
-                <div class="pub-authors">with Jan Trenczek</div>
-                <div class="pub-venue">Macroeconomic Dynamics, forthcoming </div>
-                </a>
-                </li>
-                <li>
-                <a href="https://doi.org/10.1002/jae.70040" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">              
-                    <div class="pub-title">Estimating Interaction Effects with Panel Data</div>
-                    <div class="pub-authors">with Chris Muris</div>
-                    <div class="pub-venue">Journal of Applied Econometrics, 2026</div>
-                </a>
-                </li>
-               <li>
-                <a href="https://doi.org/10.1016/j.jce.2026.01.004" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">              
-                    <div class="pub-title">How does FDI transmit into domestic investment? Exploring intra-industry and financial channels</div>
-                    <div class="pub-authors">with Tim de Leeuw</div>
-                    <div class="pub-venue">Journal of Comparative Economics, 2026</div>
-                </a>
-                </li>
-                <li>
-                    <div class="pub-title">When Do We See Poverty Convergence?</div>
-                    <div class="pub-authors">with Jesus Crespo Cuaresma and Stephan Klasen</div>
-                    <div class="pub-venue">Oxford Bulletin of Economics and Statistics, 2022</div>
-                </li>
-                <li>
-                    <div class="pub-title">The Rise of Robots and the Fall of Routine Jobs</div>
-                    <div class="pub-authors">with Gaaitzen de Vries, Elisabetta Gentile, and Sebastien Miroudot</div>
-                    <div class="pub-venue">Labour Economics, 2020</div>
-                </li>
-                <li>
-                    <div class="pub-title">Explaining Ethiopia's Growth Acceleration—The Role of Infrastructure and Macroeconomic Policy</div>
-                    <div class="pub-authors">with Lars Christian Moller</div>
-                    <div class="pub-venue">World Development, 2017</div>
-                </li>
-                <li>
-                    <div class="pub-title">Measuring multinational production with foreign direct investment statistics: A survey of challenges and recent developments</div>
-                    <div class="pub-authors">with Bruno Casella and Maria Borga</div>
-                    <div class="pub-venue">Journal of Economic Surveys, 2025</div>
-                </li>
-            </ul>
-            <p style="margin-top: 1.5rem;"><a href="https://scholar.google.com/citations?user=xV6srDwAAAAJ" target="_blank" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">Full publication list →</a></p>
         </section>
 
         <section>
             <h2>Upcoming Talks</h2>
             <ul class="talks-list">
                 <li>TBA</li>
-             </ul>
+            </ul>
         </section>
 
         <footer>
